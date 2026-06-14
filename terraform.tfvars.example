@@ -1,0 +1,62 @@
+#=====================================================
+# TERRAFORM VARIABLES - CUSTOMIZE YOUR SCENARIO
+# Copy this to terraform.tfvars and modify as needed
+#=====================================================
+
+# AWS CLI Profile to use for deployment
+profile = "cloudgoat"
+
+# AWS Region
+region = "us-east-1"
+
+# Unique identifier for this scenario instance
+# Change this to something random for each deployment
+cgid = "cgid7c11loyvlf"
+
+# Scenario name (usually don't change this)
+scenario_name = "iam_privesc_by_attachment"
+
+# IP Whitelist for SSH access (IMPORTANT: Change to your IP!)
+# Find your IP: curl ifconfig.co
+cg_whitelist = ["YOUR.IP.ADDRESS.HERE/32"]
+
+#=====================================================
+# SCENARIO CUSTOMIZATION
+#=====================================================
+
+# Name of the initial attacker IAM user
+attacker_user_name = "kerrigan"
+
+# Name of the low-privilege EC2 role
+meek_role_name = "ec2-meek-role"
+
+# Name of the high-privilege EC2 role
+mighty_role_name = "ec2-mighty-role"
+
+# Name of the target EC2 instance
+target_server_name = "super-critical-security-server"
+
+# EC2 instance type
+instance_type = "t2.micro"
+
+#=====================================================
+# DIFFICULTY ADJUSTMENTS
+#=====================================================
+
+# Number of decoy IAM roles to create (0 = none, increases difficulty)
+# These roles won't have useful permissions but add noise to enumeration
+add_decoy_roles = 0
+
+# Enable CloudTrail logging (for detection practice)
+# If true, your actions will be logged
+enable_cloudtrail = false
+
+#=====================================================
+# NETWORK CONFIGURATION
+#=====================================================
+
+# VPC CIDR block
+vpc_cidr = "10.0.0.0/16"
+
+# Public subnet CIDR block
+public_subnet_cidr = "10.0.1.0/24"
